@@ -1,0 +1,36 @@
+﻿@*@model IEnumerable<UniversityRegistrationMVC.Models.UniversityUserData>*@
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/UniversityCSS/UniversityLoginCSS.css">
+    <script type="text/javascript" src="~/Scripts/UniversityJS/UniversityLogin.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="backbox">
+            <div class="loginMsg">
+                <div class="textcontent">
+                    <p class="title">Don't have an account?</p>
+                    <p>Sign up to enroll</p>
+                    <button id="switch1">Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="frontbox">
+            <div class="login">
+                <h2>LOG IN</h2>
+                <div class="inputbox">
+                    <input type="text" id="email" placeholder="EMAIL">
+                    <input type="password" id="password" placeholder="PASSWORD">
+                </div>
+                <p>FORGET PASSWORD?</p>
+                <button onclick="SignIn()" id="login">LOG IN</button>
+            </div>
+        </div>
+    </div>
+    @*@foreach(UniversityRegistrationMVC.Models.UniversityUserData userData in Model)
+            {
+                <h3>@userData.Email</h3>
+            }*@
+</body>
+</html>
