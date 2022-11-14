@@ -1,18 +1,23 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
+using BusinessLayer;
+using BusinessLayer.UniversityUser;
 using DAL.Model;
 
 namespace UniversityRegistrationMVC.Controllers
 {
+
     public class UniversityLoginController : Controller
     {
-        DBContext dbContext = new DBContext();
-        //public ActionResult UniversityLogin()
-        //{
-        //    return View();
-        //}
+        public IUniversityUserBL UniversityUserBL;
+        public UniversityLoginController()
+        {
+            UniversityUserBL = new UniversityUserBL();
+        }
+        public UniversityLoginController(IUniversityUserBL universityUserBL)
+        {
+            UniversityUserBL = universityUserBL;
+        }
         public ActionResult UniversityLogin()
         {
             return View();
@@ -26,14 +31,12 @@ namespace UniversityRegistrationMVC.Controllers
         [HttpPost]
         public ActionResult UniversityLogin(UniversityUserData universityUserData)
         {
-            bool userIsValid = true;
-            if (userIsValid)
-            {
-                
-            }
-            //return Json(new { JsonRequestBehavior.AllowGet });
+            bool userIsValid = UniversityUserBL.AuthenticateUser(universityUserData);
             return Json(new { result = userIsValid, url = Url.Action("UniversitySuccessfulLogin", "UniversitySuccessfulLogin") });
-
+        }
+        public ActionResult UniversitySignup()
+        {
+            return Json(new {url = Url.Action("UniversityRegistration", "UniversityStudent") });
         }
     }
 }

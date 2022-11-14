@@ -127,15 +127,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController\UniversityStudentController.cs" />
     <Compile Include="Controllers\UniversityController\UniversityLoginController.cs" />
-    <Compile Include="Controllers\UniversityController\UniversityRegistrationController.cs" />
     <Compile Include="Controllers\UniversityController\UniversitySuccessfulLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DBContext.cs" />
-    <Compile Include="Models\UniversityStudentData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +163,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\UniversityJS\UniversityLogin.js" />
-    <Content Include="Views\UniversityRegistration\UniversityRegistration.html" />
+    <Content Include="Scripts\UniversityJS\UniversityRegistration.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -180,9 +180,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UniversityLogin\UniversityLogin.cshtml" />
     <Content Include="Views\UniversitySuccessfulLogin\UniversitySuccessfulLogin.cshtml" />
+    <Content Include="Views\UniversityStudent\UniversityRegistration.cshtml" />
+    <Content Include="Views\UniversityAdmin\UniversityAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\UniversityTable\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
