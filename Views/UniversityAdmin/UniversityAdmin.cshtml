@@ -1,7 +1,61 @@
-﻿
-@{
-    ViewBag.Title = "UniversityAdmin";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+</head>
+<body onload="fillTables()">
+    <table id="myTable" class="table table-borderless table-striped table-earning">
+        <thead>
+            <tr>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Address</th>
+                <th>PhoneNo</th>
+                <th>DateofBirth</th>
+                <th>GuardianName</th>
+                <th>NationalID</th>
+            </tr>
+        </thead>
+        <tbody id="testBody"></tbody>
+    </table>
+    <script>
+        
+        function fillTables() {
+            $.ajax({
+                type: "GET",
+                url: "/UniversityAdmin/UniversityAdminGetrecords",
+                dataType: "json",
+                success:
+                    function loadTableData(results) {
+                    const table = document.getElementById("testBody");
+                    results.students.forEach(item => {
+                        let row = table.insertRow();
+                        let FirstName = row.insertCell(0);
+                        FirstName.innerHTML = item.FirstName;
+                        let LastName = row.insertCell(1);
+                        LastName.innerHTML = item.LastName;
+                        let Address = row.insertCell(2);
+                        Address.innerHTML = item.Address;
+                        let PhoneNo = row.insertCell(3);
+                        PhoneNo.innerHTML = item.PhoneNo;
+                        let DateofBirth = row.insertCell(4);
+                        //DateofBirth.innerHTML = item.DateofBirth;
+                        var dob = item.DateofBirth;
+                        DateofBirth.innerHTML = new Date(parseInt(dob.replace(/[^0-9 +]/g, ''))).toLocaleDateString();
+                        let GuardianName = row.insertCell(5);
+                        GuardianName.innerHTML = item.GuardianName;
+                        let NationalID = row.insertCell(6);
+                        NationalID.innerHTML = item.NationalID;
+                    });
+                }
+            });
+        }
+    </script>
+</body>
 
-<h2>UniversityAdmin</h2>
+</html>
 
+    

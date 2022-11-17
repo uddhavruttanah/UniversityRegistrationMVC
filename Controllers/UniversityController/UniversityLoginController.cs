@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using BusinessLayer;
+using BusinessLayer.UniversityAdmin;
 using BusinessLayer.UniversityUser;
 using DAL.Model;
 
@@ -32,6 +33,9 @@ namespace UniversityRegistrationMVC.Controllers
         public ActionResult UniversityLogin(UniversityUserData universityUserData)
         {
             bool userIsValid = UniversityUserBL.AuthenticateUser(universityUserData);
+            bool checkAdmin = UniversityUserBL.CheckAdminRole(universityUserData);
+            if (checkAdmin)
+                return Json(new { result = userIsValid, url = Url.Action("UniversityAdmin", "UniversityAdmin") });
             return Json(new { result = userIsValid, url = Url.Action("UniversitySuccessfulLogin", "UniversitySuccessfulLogin") });
         }
         public ActionResult UniversitySignup()

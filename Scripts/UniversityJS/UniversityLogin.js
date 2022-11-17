@@ -21,7 +21,6 @@
         },
         error: function (response) {
            toastr.error('Something happen, Please contact Administrator!!');
-
         }
     });
 }
