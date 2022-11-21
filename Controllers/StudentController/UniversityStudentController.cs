@@ -1,7 +1,5 @@
-﻿using BusinessLayer.UniversityAdmin;
-using BusinessLayer.UniversityStudent;
+﻿using BusinessLayer.UniversityStudent;
 using DAL.Model;
-using System.Security.Policy;
 using System.Web.Mvc;
 
 namespace UniversityRegistrationMVC.Controllers.StudentController
@@ -31,9 +29,9 @@ namespace UniversityRegistrationMVC.Controllers.StudentController
             return View(hscSubjectsBL);
         }
         [HttpPost]
-        public ActionResult AddStudent(UniversityUserData usermodel, UniversityStudentData studentmodel)
+        public ActionResult AddStudent(UniversityUserData usermodel, UniversityStudentData studentmodel/*, GradesData gradesmodel, SubjectData subjectmodel*/)
         {
-            universityStudentBL.AddStudent(usermodel, studentmodel);
+            universityStudentBL.AddStudent(usermodel, studentmodel /*, gradesmodel, subjectmodel*/);
             return Json(new { url = Url.Action("UniversityLogin", "UniversityLogin") });
         }    
     }

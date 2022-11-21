@@ -16,7 +16,6 @@ namespace UniversityRegistrationMVC.Controllers.AdminController
         {
             this.universityAdminBL = new UniversityAdminBL();
         }
-        
         [HttpGet]
         public ActionResult UniversityAdminGetrecords()
         {
@@ -29,18 +28,5 @@ namespace UniversityRegistrationMVC.Controllers.AdminController
             var students = universityAdminBL.GetStudents();
             return View(universityAdminBL);
         }
-
-        /*
-          [HttpPost]
-        public ActionResult UniversityLogin(UniversityUserData universityUserData)
-        {
-            bool userIsValid = UniversityUserBL.AuthenticateUser(universityUserData);
-            bool checkAdmin = UniversityUserBL.CheckAdminRole(universityUserData);
-            if (checkAdmin)
-                return Json(new { result = userIsValid, url = Url.Action("UniversityAdmin", "UniversityAdmin") });
-            return Json(new { result = userIsValid, url = Url.Action("UniversitySuccessfulLogin", "UniversitySuccessfulLogin") });
-        }
-         
-         */
     }
 }

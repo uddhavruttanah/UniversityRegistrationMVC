@@ -16,12 +16,6 @@
                 return false;
             }
         },
-        failure: function (response) {
-           toastr.error('Unable to make request!!');
-        },
-        error: function (response) {
-           toastr.error('Something happen, Please contact Administrator!!');
-        }
     });
 }
 function SignUp()

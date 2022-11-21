@@ -7,7 +7,6 @@ using DAL.Model;
 
 namespace UniversityRegistrationMVC.Controllers
 {
-
     public class UniversityLoginController : Controller
     {
         public IUniversityUserBL UniversityUserBL;
@@ -23,12 +22,6 @@ namespace UniversityRegistrationMVC.Controllers
         {
             return View();
         }
-        //[HttpGet]
-        //public ActionResult UniversityLogin(UniversityUserData universityUserData, DBContext dBContext)
-        //{
-        //    var data = dBContext.GetUniversityUser();
-        //    return View(data.ToList());
-        //}
         [HttpPost]
         public ActionResult UniversityLogin(UniversityUserData universityUserData)
         {
