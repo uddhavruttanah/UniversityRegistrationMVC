@@ -1,11 +1,11 @@
 ﻿function SignIn() {
     var email = $("#email").val();
     var password = $("#password").val();
-    var authObj = { Email: email, Password: password };
+    var loggingDetails = { Email: email, Password: password };
     $.ajax({
         type: "POST",
         url: "/UniversityLogin/UniversityLogin",
-        data: authObj,
+        data: loggingDetails,
         dataType: "json",
         success: function (response) {
             if (response.result) {

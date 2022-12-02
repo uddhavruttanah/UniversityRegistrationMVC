@@ -25,23 +25,13 @@ function Register() {
     var DateofBirth = $("#DateofBirth").val();
     var GuardianName = $("#GuardianName").val();
     var NationalID = $("#NationalID").val();
-    //var Subject1 = $("#SubjectList1").val();
-    //var Grades1 = $("#Grades1").val();
-    //var Subject2 = $("#SubjectList2").val();
-    //var Grades2 = $("#Grades2").val();
-    //var Subject3 = $("#SubjectList3").val();
-    //var Grades3 = $("#Grades3").val();
-
-    var Subjects = [];
-    Subjects.push = ($("#SubjectList1").val());
-    Subjects.push = ($("#SubjectList2").val());
-    Subjects.push = ($("#SubjectList3").val());
-
-    var Grades = [];
-    Grades.push($("#Grades1").val());
-    Grades.push($("#Grades2").val());
-    Grades.push($("#Grades3").val());
-    var register = { FirstName: FirstName, LastName: LastName, Email: Email, Password: Password, Address: Address, PhoneNo: PhoneNo, DateofBirth: DateofBirth, GuardianName: GuardianName, NationalID: NationalID, SubjectID: Subjects, Grade: Grades };
+    var Subject1 = $("#SubjectList1").val();
+    var Grade1 = $("#Grades1").val();
+    var Subject2 = $("#SubjectList2").val();
+    var Grade2 = $("#Grades2").val();
+    var Subject3 = $("#SubjectList3").val();
+    var Grade3 = $("#Grades3").val();
+    var register = { FirstName: FirstName, LastName: LastName, Email: Email, Password: Password, Address: Address, PhoneNo: PhoneNo, DateofBirth: DateofBirth, GuardianName: GuardianName, NationalID: NationalID, SubjectID_1: Subject1, Grade_1: Grade1, SubjectID_2: Subject2, Grade_2: Grade2, SubjectID_3: Subject3, Grade_3: Grade3 };
     $.ajax({
         type: "POST",
         url: "/UniversityStudent/AddStudent",

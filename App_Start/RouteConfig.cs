@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace UniversityRegistrationMVC
@@ -12,7 +8,6 @@ namespace UniversityRegistrationMVC
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -29,9 +29,9 @@ namespace UniversityRegistrationMVC.Controllers.StudentController
             return View(hscSubjectsBL);
         }
         [HttpPost]
-        public ActionResult AddStudent(UniversityUserData usermodel, UniversityStudentData studentmodel/*, GradesData gradesmodel, SubjectData subjectmodel*/)
+        public ActionResult AddStudent(UniversityUserData usermodel, UniversityStudentData studentmodel, GradesData gradesmodel, SubjectData subjectmodel)
         {
-            universityStudentBL.AddStudent(usermodel, studentmodel /*, gradesmodel, subjectmodel*/);
+            universityStudentBL.AddStudent(usermodel, studentmodel, gradesmodel, subjectmodel);
             return Json(new { url = Url.Action("UniversityLogin", "UniversityLogin") });
         }    
     }

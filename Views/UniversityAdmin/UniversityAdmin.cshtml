@@ -17,19 +17,19 @@
                 <th>DateofBirth</th>
                 <th>GuardianName</th>
                 <th>NationalID</th>
+                <th>TotalPoints</th>
             </tr>
         </thead>
         <tbody id="testBody"></tbody>
     </table>
-    <script>
-        
+    <script>  
         function fillTables() {
             $.ajax({
                 type: "GET",
                 url: "/UniversityAdmin/UniversityAdminGetrecords",
                 dataType: "json",
                 success:
-                    function loadTableData(results) {
+                function loadTableData(results) {
                     const table = document.getElementById("testBody");
                     results.students.forEach(item => {
                         let row = table.insertRow();
@@ -42,13 +42,14 @@
                         let PhoneNo = row.insertCell(3);
                         PhoneNo.innerHTML = item.PhoneNo;
                         let DateofBirth = row.insertCell(4);
-                        //DateofBirth.innerHTML = item.DateofBirth;
                         var dob = item.DateofBirth;
                         DateofBirth.innerHTML = new Date(parseInt(dob.replace(/[^0-9 +]/g, ''))).toLocaleDateString();
                         let GuardianName = row.insertCell(5);
                         GuardianName.innerHTML = item.GuardianName;
                         let NationalID = row.insertCell(6);
                         NationalID.innerHTML = item.NationalID;
+                        let TotalPoints = row.insertCell(7);
+                        TotalPoints.innerHTML = item.TotalPoints;
                     });
                 }
             });
