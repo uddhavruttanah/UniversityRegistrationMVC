@@ -1,5 +1,7 @@
 ﻿using BusinessLayer.UniversityStudent;
 using DAL.Model;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace UniversityRegistrationMVC.Controllers.StudentController
@@ -31,8 +33,22 @@ namespace UniversityRegistrationMVC.Controllers.StudentController
         [HttpPost]
         public ActionResult AddStudent(UniversityUserData usermodel, UniversityStudentData studentmodel, GradesData gradesmodel, SubjectData subjectmodel)
         {
-            universityStudentBL.AddStudent(usermodel, studentmodel, gradesmodel, subjectmodel);
-            return Json(new { url = Url.Action("UniversityLogin", "UniversityLogin") });
+            var results = universityStudentBL.AddStudent(usermodel, studentmodel, gradesmodel, subjectmodel);
+            List<string> errMessages = new List<string>();
+            if (results.Count > 0)
+            {
+                for (var i=0; i< results.Count; i++) {
+                    errMessages.Add(results[i].ErrorMessage);
+                }
+            }
+            return Json(new 
+            {   
+                data = results, 
+                hasErrors = results.Any(),
+                ErrorMessage = errMessages,
+                url = Url.Action("UniversityLogin", "UniversityLogin") 
+            },
+                JsonRequestBehavior.AllowGet);
         }    
     }
 }

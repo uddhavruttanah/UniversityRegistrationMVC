@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body onload="fillTables()">
-    <table id="myTable" class="table table-borderless table-striped table-earning">
+    <table id="studentSummaryTable" class="table table-borderless table-striped table-earning">
         <thead>
             <tr>
                 <th>FirstName</th>
@@ -18,10 +18,14 @@
                 <th>GuardianName</th>
                 <th>NationalID</th>
                 <th>TotalPoints</th>
+                <th>ApplicationStatus</th>
             </tr>
         </thead>
         <tbody id="testBody"></tbody>
     </table>
+    <div class="DownloadCSV">
+        <button onclick=" DownloadTableAsCSV()" id="DownloadCSV">DOWNLOAD TABLE</button>
+    </div>
     <script>  
         function fillTables() {
             $.ajax({
@@ -50,9 +54,36 @@
                         NationalID.innerHTML = item.NationalID;
                         let TotalPoints = row.insertCell(7);
                         TotalPoints.innerHTML = item.TotalPoints;
+                        let ApplicationStatus = row.insertCell(8);
+                        ApplicationStatus.innerHTML = item.ApplicationStatus;
                     });
                 }
             });
+        }
+        function DownloadTableAsCSV(separator = ',') {
+            var table_id = "studentSummaryTable";
+            var rows = document.querySelectorAll('table#' + table_id + ' tr');
+            var csv = [];
+            for (var i = 0; i < rows.length; i++) {
+                var row = [], cols = rows[i].querySelectorAll('td, th');
+                for (var j = 0; j < cols.length; j++) {
+                    var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+                    data = data.replace(/"/g, '""');
+                    row.push('"' + data + '"');
+                }
+                csv.push(row.join(separator));
+            }
+            var csv_string = csv.join('\n');
+            // Download it
+            var filename = 'export_' + table_id + '_' + new Date().toLocaleDateString() + '.csv';
+            var link = document.createElement('a');
+            link.style.display = 'none';
+            link.setAttribute('target', '_blank');
+            link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
 </body>
