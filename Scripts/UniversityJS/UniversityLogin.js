@@ -8,12 +8,10 @@
         data: loggingDetails,
         dataType: "json",
         success: function (response) {
-            if (response.result) {
+            if (response.hasErrors) {
+                throwValidationMessage(response);
+            } else {
                 window.location = response.url;
-            }
-            else {
-               toastr.error('Incorrect Email Or Password!!!');
-                return false;
             }
         },
     });
@@ -28,4 +26,12 @@ function SignUp()
                 window.location = response.url;
         }
     });
+}
+function throwValidationMessage(response) {
+    //var Message = "";
+    //good to have 
+    //split messages on seperate lines
+    if (response.hasErrors) {
+        alert(response.ErrorMessage);
+    }
 }

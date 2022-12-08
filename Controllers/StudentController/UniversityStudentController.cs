@@ -8,14 +8,14 @@ namespace UniversityRegistrationMVC.Controllers.StudentController
 {
     public class UniversityStudentController : Controller
     {
-        public IUniversityUserBL universityStudentBL;
+        public IUniversityStudentBL universityStudentBL;
         public IHscSubjectsBL hscSubjectsBL;
         public UniversityStudentController()
         {
             this.universityStudentBL = new UniversityStudentBL();
             this.hscSubjectsBL = new HscSubjectsBL();
         }
-        public UniversityStudentController(IUniversityUserBL universityStudentBL, IHscSubjectsBL hscSubjectsBL)
+        public UniversityStudentController(IUniversityStudentBL universityStudentBL, IHscSubjectsBL hscSubjectsBL)
         {
             this.universityStudentBL = universityStudentBL;
             this.hscSubjectsBL = hscSubjectsBL;
